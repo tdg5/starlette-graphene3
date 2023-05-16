@@ -588,10 +588,11 @@ _GRAPHIQL_HTML = """
     ).join('&');
 
     // Defines a GraphQL fetcher using the fetch API.
-    function graphQLFetcher(graphQLParams) {
+    function graphQLFetcher(graphQLParams, {headers}) {
       var headers = {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...headers
       };
       if (csrftoken) {
         headers['X-CSRFToken'] = csrftoken;
